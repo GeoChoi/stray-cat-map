@@ -4,7 +4,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const catRecordsRouter = require('./routes/cat_record.route');
 
 var app = express();
 
@@ -15,7 +15,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+
+app.use('/cat-records', catRecordsRouter);
+
+app.use((err, req, res, next) => {
+  res.status(500);
+  res.json({ message: err.message });
+})
 
 const db = require('./db/models');
 

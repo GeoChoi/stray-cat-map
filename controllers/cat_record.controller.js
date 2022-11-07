@@ -1,21 +1,5 @@
 const { Sequelize, cat_record: catRecord } = require('../db/models');
 
-exports.create = async (req, res, next) => {
-  try {
-    const result = await catRecord.create({
-      name: req.body.name,
-      sex: req.body.sex,
-      age: req.body.age,
-      latitude: req.body.latitude,
-      longitude: req.body.longitude,
-      catId: req.body.catId
-    });
-    res.json(result);
-  } catch (err) {
-    next(err);
-  }
-};
-
 const searchByDistance = (distance = 1000, latitude = 37.5666805, longitude = 126.9784147) => {
   const here = Sequelize.fn('Point', longitude, latitude);
   const there = Sequelize.fn('Point', Sequelize.col('longitude'), Sequelize.col('latitude'));
@@ -40,6 +24,22 @@ const parseQuery = req => {
 exports.findAll = async (req, res, next) => {
   try {
     const result = await catRecord.findAll({ where: { [Sequelize.Op.and]: parseQuery(req) } });
+    res.json(result);
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.create = async (req, res, next) => {
+  try {
+    const result = await catRecord.create({
+      name: req.body.name,
+      sex: req.body.sex,
+      age: req.body.age,
+      latitude: req.body.latitude,
+      longitude: req.body.longitude,
+      catId: req.body.catId
+    });
     res.json(result);
   } catch (err) {
     next(err);

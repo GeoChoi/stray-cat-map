@@ -9,3 +9,7 @@ Content-Type: application/json
   "longitude": 126.9784147,
   "catId": 1
 }
+
+###
+
+POST http://localhost:3000/cats

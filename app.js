@@ -5,6 +5,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 const catRecordsRouter = require('./routes/cat_record.route');
+const catsRouter = require('./routes/cat.route');
 
 var app = express();
 
@@ -17,6 +18,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 
 app.use('/cat-records', catRecordsRouter);
+
+app.use('/cats', catsRouter);
 
 app.use((err, req, res, next) => {
   res.status(500);

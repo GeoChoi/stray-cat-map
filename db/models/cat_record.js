@@ -19,8 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     sex: DataTypes.STRING,
     age: DataTypes.INTEGER,
     latitude: DataTypes.FLOAT,
-    longitude: DataTypes.FLOAT,
-    image: DataTypes.STRING
+    longitude: DataTypes.FLOAT
   }, {
     sequelize,
     modelName: 'cat_record',

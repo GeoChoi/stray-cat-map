@@ -1,0 +1,11 @@
+POST http://localhost:3000/cat-records
+Content-Type: application/json
+
+{
+  "name": "까미",
+  "sex": "F",
+  "age": 12,
+  "latitude": 37.5666805,
+  "longitude": 126.9784147,
+  "catId": 1
+}

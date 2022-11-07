@@ -5,4 +5,6 @@ const catRecords = require('../controllers/cat_record.controller');
 
 router.get('/', catRecords.findAll);
 
+router.post('/', catRecords.create);
+
 module.exports = router;
